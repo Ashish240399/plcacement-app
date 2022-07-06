@@ -1,0 +1,36 @@
+.main{
+    height:415px;
+    width:400px;
+    overflow-y: auto;
+    margin: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: 10%;
+    padding:10px;
+}
+::-webkit-scrollbar{
+    width:0px
+}
+::-webkit-scrollbar-thumb{
+    background-color: wheat
+}
+.single{
+    margin: 5px;;
+    border:1px solid gray;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.green{
+    background-color: rgb(21, 245, 21);
+    border-radius: 50%;
+    height:7px;
+    width: 7px;
+}
+.gray{
+    background-color: gray;
+    border-radius: 50%;
+    height:7px;
+    width: 7px;
+}
