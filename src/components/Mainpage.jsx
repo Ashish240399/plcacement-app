@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { DetailedContext } from './context/detailedContext';
+import { SearchedContext } from './context/searchContext';
+import DetailsPage from './DetailedPage';
 import "./page.css"
 function Mainpage() {
-    const [items,setItems]=useState([]);
+    const {searched}=useContext(SearchedContext);
+    const {findDetails}=useContext(DetailedContext);
+    const [items,setItems]=useState();
     const [page,setPage]=useState(1);
+    const [pop,setPop]=useState(false)
     const [loader,setLoader]=useState(true);
     const fetchData=async(page)=>{
         if(page<=6){
@@ -28,27 +34,45 @@ function Mainpage() {
     
     function loadMoreData(e){
         
-        let bottom=e.target.scrollHeight - e.target.clientHeight-e.target.scrollTop < 100;
+        let bottom=e.target.scrollHeight - e.target.clientHeight-e.target.scrollTop < 50;
         console.log(bottom)
         if(bottom){
-            let page_req=page+1;
-            fetchData(page_req);
+            setTimeout(()=>{
+                let page_req=page+1;
+                setPage(page_req)
+            },2000)
+            
+            //fetchData(page_req);
             setLoader(true)
-            setPage(page_req)
         }
     }
+    
     console.log(items)
+    // console.log(searched)
+
   return (
     <div onScroll={loadMoreData} className="main">
-        {items.length>0 && items.map((el,i)=>(
-            <div className='single' key={i}>
-                <p>{el.name}</p>
-                <p className={`${el.status=="Alive"?"green":"gray"}`}></p>
-                <p>{el.status}-</p>
-                <p>{el.species}</p>
+        {items && items.filter((el)=>el.name.includes(searched)).map((el,i)=>(
+            <div onClick={()=>{
+                // <DetailsPage value={el}/>
+                <DetailsPage value={el} value1={pop} />
+                setPop(!pop);
+                findDetails(el)
+            }} className='single' key={i}>
+                <div className='left-part'>
+                    <img className='avatar' src={el.image}/>
+                    <p>{el.name}</p>
+                </div>
+                <div className='right-part'>
+                    <p className={`${el.status==="Alive"?"green":"gray"}`}></p>
+                    <p>{el.status}-</p>
+                    <p>{el.species}</p>
+                </div>
+                
             </div>
+            
         ))}
-        {page<6?<h2>Loading</h2>:<h1>You reached end</h1>}
+        {page<6?<h3>Loading...</h3>:<h1>You reached end</h1>}
     </div>
   )
 }

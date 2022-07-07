@@ -1,12 +1,10 @@
 .main{
-    height:415px;
-    width:400px;
+    height:310px;
+    width:500px;
     overflow-y: auto;
     margin: auto;
     overflow: scroll;
     overflow-x: hidden;
-    margin-top: 10%;
-    padding:10px;
 }
 ::-webkit-scrollbar{
     width:0px
@@ -15,22 +13,37 @@
     background-color: wheat
 }
 .single{
-    margin: 5px;;
+    margin: 5px;
     border:1px solid gray;
     background-color: whitesmoke;
     display: flex;
     justify-content:space-around;
     align-items: center;
+    padding:10px 14px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .green{
     background-color: rgb(21, 245, 21);
     border-radius: 50%;
     height:7px;
     width: 7px;
+    margin-right: 10px;
 }
 .gray{
     background-color: gray;
     border-radius: 50%;
     height:7px;
     width: 7px;
+    margin-right: 10px;
+}
+.avatar{
+    height:40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.left-part,.right-part{
+    display: flex;
+    flex:1;
+    align-items: center;
 }
