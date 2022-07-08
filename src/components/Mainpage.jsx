@@ -55,9 +55,9 @@ function Mainpage() {
         {items && items.filter((el)=>el.name.includes(searched)).map((el,i)=>(
             <div onClick={()=>{
                 // <DetailsPage value={el}/>
-                <DetailsPage value={el} value1={pop} />
+                // <DetailsPage value={el} value1={pop} />
                 setPop(!pop);
-                findDetails(el)
+                findDetails(el);
             }} className='single' key={i}>
                 <div className='left-part'>
                     <img className='avatar' src={el.image}/>

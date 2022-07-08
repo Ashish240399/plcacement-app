@@ -19,9 +19,10 @@ const style = {
   p:4,
   borderRadius:'10px',
 };
-export default function DetailPage({value,value1}) {
+export default function DetailPage() {
     const {details}=useContext(DetailedContext);
     console.log(details);
+    //console.log(value);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
